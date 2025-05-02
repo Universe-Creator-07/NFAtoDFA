@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NFA to DFA</title>
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="NFAtoDFA.css">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand">NFA to DFA Converter</a>
+    </nav>
+
+    <div class="container my-4">
+      <div class="main-part">
+        <h1 class="text-center">Finite Automata Converter</h1>
+        <h2>Input the NFA</h2>
+        <p class="instructions">
+          Enter the NFA transitions below. Define the initial and final states.
+        </p>
+        <ul class="instructions-list">
+          <li>Each transition must have a current state and input symbol.</li>
+          <li>Use [ &lambda; ] for epsilon transitions.</li>
+          <li>States (Q) and alphabet (&Sigma;) will be auto-generated.</li>
+          <li>Inputs are case-sensitive and spaces matter.</li>
+        </ul>
+
+        <div class="d-flex justify-content-center mb-3">
+          <button class="btn btn-danger" id="resetBtn">Reset</button>
+          <button class="btn btn-success" id="exampleBtn">Example</button>
+        </div>
+
+        <form id="nfa">
+          <div class="form-group form-inline justify-content-center">
+            <label for="initialStateInput" class="mr-2">Initial State:</label>
+            <input type="text" class="form-control" id="initialStateInput" />
+          </div>
+
+          <div class="form-group form-inline justify-content-center">
+            <label for="finalStatesInput" class="mr-2">Final States:</label>
+            <input type="text" class="form-control" id="finalStatesInput" />
+          </div>
+
+          <div id="nfa-transitions" class="mb-3">
+            <div class="production-row">
+              &delta;(&nbsp;<input type="text" class="form-control current-state-input" />&nbsp;,&nbsp;
+              <input type="text" class="form-control input-symbol" placeholder="&lambda;" />&nbsp;)
+              =&nbsp;<input type="text" class="form-control next-states" />
+              
+            </div>
+          </div>
+        </form>
+
+        <div class="new-production">
+          <button id="new-transition" class="btn btn-outline-primary">
+            + Add Transition
+          </button>
+        </div>
+      </div>
+
+      <div class="results-section">
+        <h1 id="verify-update-debug">Verify</h1>
+        <p>This is the NFA you have input:</p>
+        <div id="current-nfa-status"></div>
+        <div id="current-nfa"></div>
+      </div>
+
+      <div class="results-section">
+        <h1>Equivalent DFA</h1>
+        <div class="row">
+          <div class="col-lg">
+            <div id="current-dfa-status"></div>
+            <div id="current-dfa"></div>
+          </div>
+          <div id="step-div" class="col-lg"></div>
+        </div>
+      </div>
+
+      <div class="results-section">
+        <h1>Minimized DFA</h1>
+        <div id="current-dfa-minimized-status"></div>
+        <div id="current-dfa-minimized"></div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="guide"><marquee behavior="" direction="">Under the guidance of Er. Swati Guatam</marquee></div>
+        <br>
+        Made by
+        <br>
+        <p id="name">Sarthak Kesarwani (2300430100058) <br> Akshat Verma (2300430100007)<br> Vivek Yadav (2300430100074)<br> Anuj Tiwari (2300430100012)<br> Roopraj Ganguli (2300430100056)</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/17ac6b8a5c.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/viz.js@1.8.1/viz.js" type="javascript/worker"></script>
+    <script src="https://unpkg.com/d3-graphviz@2.6.1/build/d3-graphviz.js"></script>
+    <script src="NFAtoDFA-ENGINE.js"></script>
+    <script src="NFAtoDFA-DOM.js"></script>
+  </body>
+</html>
